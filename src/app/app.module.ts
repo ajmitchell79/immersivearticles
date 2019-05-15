@@ -32,13 +32,14 @@ import {ConfigService} from './services/config.service';
 import { GlobalErrorHandler } from './shared/error/GlobalErrorHandler';
 import { ChartComponent } from './shared/chart/chart.component';
 import { ElementScrollPercentageDirective } from './shared/element-scroll-percentage.directive';
+import { EntityPanelComponent } from './entity-panel/entity-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent, 
     routingComponents, 
-    ChartComponent, ElementScrollPercentageDirective
+    ChartComponent, ElementScrollPercentageDirective, EntityPanelComponent
   ],
   imports: [
     BrowserModule,
