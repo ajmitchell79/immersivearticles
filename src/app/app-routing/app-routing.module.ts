@@ -7,6 +7,9 @@ import {Design1Component} from '../design1/design1.component';
 import {Design2Component} from '../design2/design2.component';
 import {Design3Component} from '../design3/design3.component';
 import {Design4Component} from '../design4/design4.component';
+import {Design6Component} from '../design6/design6.component';
+
+
 
 import { ErrorComponent } from '../shared/error/error.component';
 
@@ -48,6 +51,13 @@ const routes: Routes = [ {
     redirectPath: 'design4'
   }
 },
+{
+  path: 'design6',component: Design6Component, canActivate: [AuthGuard],
+  data: { 
+    page: 'design6',
+    redirectPath: 'design6'
+  }
+},
 // {
 //   path: 'test3', 
 //  loadChildren: '../test3/test3.module#Test3Module'
@@ -72,4 +82,4 @@ export class AppRoutingModule { }
 
 
 export const routingComponents = [OriginalComponent, Design1Component,  Design2Component,
-  Design3Component, Design4Component,ErrorComponent];
+  Design3Component, Design4Component,Design6Component,ErrorComponent];
