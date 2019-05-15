@@ -62,11 +62,11 @@
                 <div class="col-md entity-list">
                         <div class="entity-panel" *ngFor="let entity of entities">
                                 <div class="entity-detail">
-                                        <div class="entity-name"><span>{{entity.name}}</span></div>
-                                        <div class="entity-description"><span>{{entity.description}}</span></div>
+                                        <div class="entity-name"><span>{{entity.data.name}}</span></div>
+                                        <div class="entity-description"><span>{{entity.data.description}}</span></div>
                                 </div>
-                                <div *ngIf="entity.image">
-                                        <img class="entity-image" src="{{entity.image.hostPageUrl}}" />
+                                <div *ngIf="entity.data.image">
+                                        <img class="entity-image" src="{{entity.data.image.hostPageUrl}}" />
                                 </div>
                         </div>
                 </div>
