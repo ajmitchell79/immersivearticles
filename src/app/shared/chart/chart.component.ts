@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Chart } from 'angular-highcharts';
 import { Title } from '@angular/platform-browser';
+
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-chart',
@@ -10,68 +11,102 @@ import { Title } from '@angular/platform-browser';
 export class ChartComponent implements OnInit {
 
   @Input() title: string;
+  @Input() containerId: string;
+
+  chart: any;
+  series: any;
+
+  public options: any = {
+      
+    chart: {
+      type: 'bar'
+    },
+    legend: {
+      enabled: false},
+    title: {
+      text: this.title
+    },
+    credits: {
+      enabled: false
+    },
+    plotOptions: {
+      line: {
+          marker: {
+              enabled: false
+          }
+      }
+  },
+  xAxis: {
+    categories: ['JPMorgan', 'Goldman', 'UPS', 'HSBC', 'Citi'],
+    title: {
+        text: null
+    }
+},
+series:[{
+  pointWidth:30,
+  data: [
+    {y: 43934, name: 'JPMorgan', color: 'red'},
+    {y: 57177, name: 'Goldman', color: 'yellow'},
+    {y: 97031, name: 'UPS', color: 'green'},
+    {y:52503, name: 'HSBC', color: 'purple'},
+    {y: 24064, name: 'Citi', color: 'blue'}
+  ]}
+]
+//   series: [{
+//     name: 'JPMorgan',
+//   //  type: 'line',
+//     //data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+//     data: [43934]
+// }, {
+//     name: 'Goldman Sachs',
+//  //   type: 'line',
+//     //data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+//     data: [24916]
+// }, {
+//     name: 'UPS',
+//   //  type: 'line',
+//     //data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+//     data: [11744]
+// }, {
+//     name: 'HSBC',
+//    // type: 'line',
+//     //data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
+//     data: [34227,24916, 24916, 24916, 24916]
+// }, {
+//     name: 'Citi',
+//   // type: 'line',
+//     //data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
+//     data: [12908,24916, 24916, 24916, 24916]
+// }]
+  };
 
   constructor() { 
    //debugger;
   }
 
-  chart: Chart;
+  ngAfterViewInit()
+  {
+    this.chart = Highcharts.chart(this.containerId, this.options);
+    debugger;
+    this.chart.setTitle({text: this.title});
+    
+  }
 
   ngOnInit() {
-
- // debugger;
-
-    this.chart = new Chart({
-      chart: {
-        type: 'line'
-      },
-      title: {
-        text: this.title
-      },
-      credits: {
-        enabled: false
-      },
-      plotOptions: {
-        line: {
-            marker: {
-                enabled: false
-            }
-        }
-    },
-    series: [{
-      name: 'JPMorgan',
-      type: 'line',
-      data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-  }, {
-      name: 'Goldman Sachs',
-      type: 'line',
-      data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-  }, {
-      name: 'UPS',
-      type: 'line',
-      data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-  }, {
-      name: 'HSBC',
-      type: 'line',
-      data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-  }, {
-      name: 'Citi',
-      type: 'line',
-      data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-  }]
-    });
 
   }
 
   public updateSeries(series : any[])
   {
-    debugger;
-    this.chart.removeSeries(0);
-    this.chart.addSeries({
-      name: 'JPMorganX',
-      type: 'line',
-      data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-    },true, true);
+debugger;
+ //  for(let i=0;i<5; i++)
+  // {
+  //  this.chart.series[i].setData(series[i],true);
+  // }
+
+  //this.chart.series[0].setData([1,2,3,4,5]);
+  this.chart.series[0].setData(series[0]);
+
   }
 
   // add() {

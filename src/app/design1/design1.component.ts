@@ -49,15 +49,41 @@ export class Design1Component implements OnInit {
   }
 
   public recordInnerScroll( percent: number ) : void {
-
       this.innerScroll = percent;
-      console.log(percent);
+      //console.log(percent);
+      this.updateSeries();
 
   }
 
   public updateSeries()
   {
-    this.chart1.updateSeries(null);
+    this.chart1.updateSeries(this.randomSeries());
+    this.chart2.updateSeries(this.randomSeries());
+  }
+
+
+  private randomSeries(): number[]
+  {   
+    let result = [];
+
+   // for(let i=0;i<5; i++)
+   // {
+      result.push([
+        Math.floor(Math.random() * 5000),
+        Math.floor(Math.random() * 5000),
+       Math.floor(Math.random() * 5000),
+        Math.floor(Math.random() * 5000),
+        Math.floor(Math.random() * 5000),
+       //Math.floor(Math.random() * 5000),
+      //  Math.floor(Math.random() * 5000),
+     //   Math.floor(Math.random() * 5000)
+    ]
+      )
+   // }
+
+    return result;
+
+   
   }
 
   
