@@ -30,12 +30,15 @@ import {AuthenticationService} from './services/authentication.service';
 import {ConfigService} from './services/config.service';
 
 import { GlobalErrorHandler } from './shared/error/GlobalErrorHandler';
+import { ChartComponent } from './shared/chart/chart.component';
+import { ElementScrollPercentageDirective } from './shared/element-scroll-percentage.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent, 
-    routingComponents
+    routingComponents, 
+    ChartComponent, ElementScrollPercentageDirective
   ],
   imports: [
     BrowserModule,
