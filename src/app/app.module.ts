@@ -18,31 +18,32 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { Highlight } from './design3/highlight.pipe'
 
-import { MatNativeDateModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatProgressBarModule, MatBottomSheetModule,
+import {
+  MatNativeDateModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatProgressBarModule, MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatTableModule,
-  MatPaginatorModule , MAT_DATE_LOCALE, 
+  MatPaginatorModule, MAT_DATE_LOCALE,
   MatDialogModule,
   MatSortModule,
   MatProgressSpinnerModule
 } from '@angular/material';
 
-import {AuthenticationService} from './services/authentication.service';
-import {ConfigService} from './services/config.service';
+import { AuthenticationService } from './services/authentication.service';
+import { ConfigService } from './services/config.service';
 
 import { GlobalErrorHandler } from './shared/error/GlobalErrorHandler';
 import { ChartComponent } from './shared/chart/chart.component';
 import { ElementScrollPercentageDirective } from './shared/element-scroll-percentage.directive';
 import { EscapeHtmlPipe } from './shared/escape-html-pipe.pipe';
+import { Design6Component } from './design6/design6.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent, 
     routingComponents, 
-    ChartComponent, ElementScrollPercentageDirective, EscapeHtmlPipe,
-    Highlight
+    ChartComponent, ElementScrollPercentageDirective, EscapeHtmlPipe, Design6Component, Highlight
   ],
   imports: [
     BrowserModule,
@@ -58,31 +59,31 @@ import { EscapeHtmlPipe } from './shared/escape-html-pipe.pipe';
     ChartModule,
     ToastrModule.forRoot()
   ],
-  providers: [ 
-     {   //pre-load config service, which will check auth token exists
-     provide: APP_INITIALIZER, 
-     useFactory: configServiceFactory,
-     deps: [ConfigService],
-     multi: true
-   },
-  // {
-  //   provide: ErrorHandler, 
-  //   useClass: GlobalErrorHandler
-  // },
-  {
-     provide: HTTP_INTERCEPTORS, 
-     useClass: TokenInterceptor,
-     multi: true
-   },
+  providers: [
+    {   //pre-load config service, which will check auth token exists
+      provide: APP_INITIALIZER,
+      useFactory: configServiceFactory,
+      deps: [ConfigService],
+      multi: true
+    },
+    // {
+    //   provide: ErrorHandler, 
+    //   useClass: GlobalErrorHandler
+    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
 
-  AuthenticationService,
-  ConfigService,
-],
+    AuthenticationService,
+    ConfigService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-export function configServiceFactory(configService: ConfigService): Function {  
+export function configServiceFactory(configService: ConfigService): Function {
   return () => configService.getConfig();
 }
 
