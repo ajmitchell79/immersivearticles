@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
 //import { SafeHtml } from "@angular/platform-browser";
 import { DomSanitizer } from '@angular/platform-browser';
+import { KeywordsService} from './keywordsService'
 
 @Pipe({ name: "highlight" })
 export class Highlight implements PipeTransform {
@@ -11,39 +12,22 @@ export class Highlight implements PipeTransform {
     /* use this for global search */
     static MULTI_MATCH: string = "Multi-Match";
 
-    constructor(private sanitizer: DomSanitizer) {}
+    kwd = [];
+
+    constructor(private sanitizer: DomSanitizer, keywords: KeywordsService) {
+       this.kwd = keywords.getKeywords();
+    }
     transform(
         contentString: string = null,
         stringToHighlight: string = null,
-        option: string = "Single-And-StartsWith-Match",
-        caseSensitive: boolean = false,
-        highlightStyleName: string = "search-highlight"
     ) {
-        if (stringToHighlight && contentString && option) {
+        if (stringToHighlight && contentString) {
             let regex: any = "";
-            let caseFlag: string = !caseSensitive ? "i" : "";
-            switch (option) {
-                case "Single-Match": {
-                    regex = new RegExp(stringToHighlight, caseFlag);
-                    break;
-                }
-                case "Single-And-StartsWith-Match": {
-                    regex = new RegExp("^" + stringToHighlight, caseFlag);
-                    break;
-                }
-                case "Multi-Match": {
-                    regex = new RegExp(stringToHighlight, "g" + caseFlag);
-                    break;
-                }
-                default: {
-                    // default will be a global case-insensitive match
-                    regex = new RegExp(stringToHighlight, "gi");
-                }
+            let replaced = contentString;
+            for (let i = 0; i < this.kwd.length; i++) {
+              regex = new RegExp(this.kwd[i], "gi");
+              replaced = replaced.replace(regex, (match) => `<span ` + `data-word="` + this.kwd[i] + `" `  + `class="related-content-link" style="cursor:pointer;text-decoration:underline;color:#D40915;">${match}</span>`);
             }
-            const replaced = contentString.replace(
-                regex,
-                (match) => `<span class="related-content-link" style="cursor:pointer;text-decoration:underline;color:#D40915;">${match}</span>`
-            );
             return this.sanitizer.bypassSecurityTrustHtml(replaced);
         } else {
             return this.sanitizer.bypassSecurityTrustHtml(contentString);

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { KeywordsService } from './keywordsService';
 import { ContentService } from './contentService';
 import { Highlight } from './highlight.pipe';
@@ -19,10 +19,11 @@ export class ArticleComponent implements OnInit {
   articleText = '';
   constructor(
     private elementRef:ElementRef,
+    private renderer: Renderer2,
     private sharedService: SharedService,
     private contentService: ContentService
   ) {
-    this.subscription = this.sharedService.getMessage().subscribe(message => { 
+    this.subscription = this.sharedService.getClass().subscribe(message => { 
       this.relatedContent = message.text; 
       
     });
@@ -30,12 +31,16 @@ export class ArticleComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.elementRef.nativeElement.querySelector('.related-content-link')
-                                  .addEventListener('click', this.onClick.bind(this));
-  }
-
-  onClick() {
-    this.sharedService.sendMessage("ttrans"); 
+    this.elementRef
+      .nativeElement
+      .querySelectorAll('.related-content-link')
+      .forEach(element => {
+        this.renderer.listen(element,'click', (p1) =>
+          {
+            this.sharedService.setRelatedCnt(p1.currentTarget.getAttribute('data-word'));
+            this.sharedService.setClass("ttrans"); 
+          } 
+        )});
   }
 
   ngOnInit() {

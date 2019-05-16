@@ -5,17 +5,22 @@ import { Observable, Subject } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class SharedService {
-  private subject = new Subject<any>();
+  private classSubject = new Subject<any>();
+  private relatedCntSubject = new Subject<any>();
 
-  sendMessage(message: string) {
-    this.subject.next({ text: message });
-}
+    setClass(message: string) {
+        this.classSubject.next({ text: message });
+    }
 
-clearMessage() {
-    this.subject.next();
-}
+    getClass(): Observable<any> {
+        return this.classSubject.asObservable();
+    }
 
-getMessage(): Observable<any> {
-    return this.subject.asObservable();
-}
+    setRelatedCnt(message: string) {
+        this.relatedCntSubject.next({ text: message });
+    }
+
+    getRelatedCnt(): Observable<any> {
+        return this.relatedCntSubject.asObservable();
+    }    
 }

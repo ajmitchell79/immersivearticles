@@ -26,14 +26,29 @@ public getArticle () {
   </div>`;
 }
 
-    public getRelatedLinks() {
-      return [
-        new RelatedLink("Need more gold", "http://google.com/search?q=gold"),
-        new RelatedLink("Some more reading", "http://google.com/search?q=reading"),
-        new RelatedLink("Money & Money", "http://google.com/search?q=money"),
-        new RelatedLink("Futures", "http://google.com/search?q=futures")
-  
-      ];
+    public getRelatedLinks(word) {
+      switch (word) {
+        case "Euromoney":
+          return [
+            new RelatedLink("Euromoney magazine", "https://www.euromoney.com/magazine"),
+            new RelatedLink("Markets", "https://www.euromoney.com/markets"),
+            new RelatedLink("News and Opinion", "https://www.euromoney.com/news-and-opinion")
+          ];
+        case "JPMorgan":
+          return [
+            new RelatedLink("JPMorgan", "https://www.jpmorgan.com/country/GB/en/jpmorgan"),
+            new RelatedLink("Insights", "https://www.jpmorgan.com/country/GB/EN/insights"),
+            new RelatedLink("Solutions", "https://www.jpmorgan.com/country/GB/EN/solutions")
+          ];
+        default:
+        return [
+          new RelatedLink("Need more gold", "http://google.com/search?q=gold"),
+          new RelatedLink("Some more reading", "http://google.com/search?q=reading"),
+          new RelatedLink("Get some Money", "http://google.com/search?q=money"),
+          new RelatedLink("Futures", "http://google.com/search?q=futures")
+        ];
+
+        }
     } 
   }
 
