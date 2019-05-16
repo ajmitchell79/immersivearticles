@@ -33,13 +33,15 @@ import { ConfigService } from './services/config.service';
 import { GlobalErrorHandler } from './shared/error/GlobalErrorHandler';
 import { ChartComponent } from './shared/chart/chart.component';
 import { ElementScrollPercentageDirective } from './shared/element-scroll-percentage.directive';
+import { EscapeHtmlPipe } from './shared/escape-html-pipe.pipe';
+import { Design6Component } from './design6/design6.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
-    routingComponents,
-    ChartComponent, ElementScrollPercentageDirective
+    NavComponent, 
+    routingComponents, 
+    ChartComponent, ElementScrollPercentageDirective, EscapeHtmlPipe, Design6Component
   ],
   imports: [
     BrowserModule,

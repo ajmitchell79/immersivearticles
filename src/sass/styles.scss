@@ -60,7 +60,7 @@ a {
 	z-index: 2 ;
 
 	&__indicator {
-		background-color: #FF3366 ;
+		background-color: orangered ;
 		bottom: 0px ;
 		left: 0px ;
 		position: absolute ;
@@ -82,7 +82,7 @@ a {
 	width: 50% ;
 
 	&__content {
-		border: 1px solid #f3f1f1 ;
+		//border: 1px solid #f3f1f1 ;
 		height: 900px ;
 		overflow: auto ;
 		padding: 10px 40px 10px 40px ;

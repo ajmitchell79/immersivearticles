@@ -1,25 +1,29 @@
 <div class="container-fluid mt-3">
                 <div class="row" >
-                        <div class="col-9" style="max-height: 900px;overflow-y: scroll">
+                        <div class="col-2">
+                                <div style="font-size:35pt;bottom:0;position:absolute;color:orangered">
+                                        {{innerScroll| number:'1.0-0'}}%
+                                </div>
+                        </div>
+                        <div class="col-6">
                          
                                                 <div class="scroll-progress scroll-progress--absolute">
                                                     <div class="scroll-progress__indicator" [style.width.%]="innerScroll">
                                                         <br />
                                                     </div>
                                                 </div>
-                                     
-                                                <div (scrollPercentage)="recordInnerScroll( $event )" class="inner__content">
-                                                    {{dataService.articleChartData().content}}
+                                                <div (scrollPercentage)="recordInnerScroll( $event )" class="inner__content" [innerHTML]="dataService.articleChartData().content | keepHtml">
+
                                                 </div>
 
-                              </div>
+                        </div>
                             
-                              <div class="col-3" style="max-height: 900px;overflow-y: scroll">
-                                        <input (click)="updateSeries()" type="button" value="Change Series">
-                                <app-chart #chart1 [title]="'Ranking'"></app-chart>
-                                <app-chart #chart2 [title]="'Market Share'"></app-chart>
-                                <!-- <app-chart></app-chart> -->
-                                  </div>
+                        <div class="col-2">
+                                <app-chart #chart1 [containerId]="'chart1'" [title]="'Ranking'"></app-chart>
+                                <app-chart #chart2 [containerId]="'chart2'" [title]="'Market Share'"></app-chart>
+                              
+                        </div>
+                        <div class="col-2"></div>
                     </div>
         </div>
         
