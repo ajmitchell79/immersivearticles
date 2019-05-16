@@ -34,5 +34,18 @@
     font-size: 18pt;
     font-style: italic;
     margin-bottom: 15px
+  }
+
+  .item-header{
+    font-size: 14pt;
   } 
+
+  .image{
+    width: 500px;
+    
+    -webkit-transition: all linear 0.5s;     
+    -moz-transition:all linear 0.5s;     
+    -o-transition: all linear 0.5s;     
+    transition:all linear 0.5s     
+  }
  

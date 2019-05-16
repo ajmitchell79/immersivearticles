@@ -7,26 +7,34 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 })
 export class Design2Component implements OnInit {
   @ViewChild('firstContainer') private firstContainer: ElementRef<HTMLMainElement>;
-  @ViewChild('mainContainer') private mainContainer: ElementRef<HTMLMainElement>;
+  @ViewChild('secondContainer') private secondContainer: ElementRef<HTMLMainElement>;
+  @ViewChild('thirdContainer') private thirdContainer: ElementRef<HTMLMainElement>;
   
-  public hideFirst = false;
-  public hideSecond = true;
+  public imageUrl = '';
 
   constructor() { 
   }
 
   ngOnInit() {
+    this.imageUrl = 'assets/images/troy2.jpg';
   }
 
   public recordInnerScroll( percent: number ) : void {
-    let visiblePart = this.firstContainer.nativeElement.clientHeight - this.mainContainer.nativeElement.scrollTop;
-
-    if(visiblePart > 0.0) {
-      this.hideFirst = false;
-      this.hideSecond = true;
-    }else{
-      this.hideFirst = true;
-      this.hideSecond = false;
+    if(this.firstContainer.nativeElement.getBoundingClientRect().top > 0){
+      this.imageUrl = 'assets/images/troy2.jpg';
+      return;
     }
+
+    if(this.secondContainer.nativeElement.getBoundingClientRect().top > 0){
+      this.imageUrl = 'assets/images/table-example-image.jpg';
+      return;
+    }
+
+    if(this.thirdContainer.nativeElement.getBoundingClientRect().top > 0){
+      this.imageUrl = 'assets/images/FX_2018_top_10_liquidity_NEW-780.png';
+      return;
+    }
+
+    this.imageUrl = 'assets/images/FX_2018_market_share_NEW-780.png';
   }
 }
