@@ -13,7 +13,7 @@ export class TextAnalysisService {
   analyze(text: string) {
     const url = 'http://localhost:5000/api/entities';
     const body = {
-      text: text
+      text: text.length > 5000 ? text.substr(0, 5000) : text
     };
     console.log('calling: ' + url);
     return this.http.post<BingEntityResponse>(url, body);
