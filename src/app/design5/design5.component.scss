@@ -49,6 +49,10 @@
 .entity-image-container {
     padding: 10px;
     display: flex;
+    min-width:130px;
+    min-height: 130px;
+    width: 130px;
+    height: 130px;
 }
 
 .entity-image {
