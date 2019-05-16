@@ -1,11 +1,13 @@
 .background-image{
-    background-size:cover; 
-    width:auto;
-    background-image:url("../../assets/images/queen-cover.jpg");
-    background-position: 50% 40%;
-    padding: 30px 150px;
-    color: white;
-  }
+  background-size:cover; 
+  width:auto;
+  height: 110px;
+  background-image:url("../../assets/images/queen-cover.jpg");
+  background-position: 50% 40%;
+  padding: 30px 150px;
+  color: white;
+}
+
 
 .list-container {
     flex: 1 100%;
