@@ -6,18 +6,29 @@
 <div>
 <div class="container-fluid ttr">
   <div class="row">
-    <div class="col-md" style="max-height: 600px;overflow-y: scroll">
+    <div class="col-md" style="margin: 40px;overflow-y: scroll">
       <app-article></app-article>
     </div>
-    <div class="col-md">
-      <div class="tmain {{relatedContent}}">
-        <span class="tclosebutton" (click)=onCloseRelatedContent()>X</span>
-        Related content:
-        <div class="tspan" *ngFor="let link of relatedLinks">
-          <a href="{{link.link}}">{{link.text}}</a>
-        </div>
-      </div>
+    <div class="col-md" style="margin-top: 40px;">
 
+        <div class="tmain {{relatedContent}}">
+            <span class="tclosebutton" (click)=onCloseRelatedContent()>X</span>
+            <h4>&nbsp;More {{currentWord}} Articles</h4>
+            <div class="tspan" *ngFor="let link of relatedLinks">
+              <a target="_blank" href="{{link.link}}">{{link.text}}</a>
+              <div class="tdate">{{link.date}}</div>
+            </div>
+          </div>
+
+      <div class="tmainhead {{relatedContentForHead}}">
+          <span class="tclosebutton" (click)=onCloseRelatedContent()>X</span>
+          <div class="tspan" *ngFor="let link of relatedLinks">
+            <img [src]="link.imagelink" width="330">
+            <div class="tdescription">{{link.description}}</div>
+            <div class="tdate">{{link.date}}</div>
+            <a target="_blank" href="{{link.link}}">Read article</a>
+          </div> 
+      </div>
 
     </div>
   </div>
