@@ -3,6 +3,7 @@ import { EntityImage } from './entityImage';
 export class BingEntity {
     data: BingEntityData;
     location: BingEntityLocation;
+    display: number;
 }
 
 export class BingEntityData {

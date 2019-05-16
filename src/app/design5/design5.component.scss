@@ -4,6 +4,27 @@
     padding: 15px;
     border: 1px solid #AAA;
     margin-bottom: 20px;
+    max-height: 150px;
+    transition: max-height 0.25s ease-out;
+}
+.entity-panel-small {
+    display: flex;
+    flex-direction: row;
+    max-height: 70px;
+    padding: 15px;
+    border: 1px solid #AAA;
+    margin-bottom: 10px;
+    transition: max-height 0.25s ease-out;
+}
+
+.entity-panel-hidden {
+    max-height: 0;
+    transition: max-height 0.25s ease-out;
+}
+
+.entity-detail {
+    display: flex;
+    flex-direction: column;
 }
 
 .entity-name {
@@ -15,9 +36,28 @@
 .entity-description {
     font-size: 14px;
     color: #999;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.entity-image-container {
+    padding: 10px;
+    display: flex;
 }
 
 .entity-image {
-    max-width: 250px;
-    max-height: 250px;
+    height: auto;
+    width: auto;
+    max-width: 130px;
+    max-height: 130px;
+}
+
+.highlight-text {
+    background-color: lightgreen;
+    color: green;
+    font-weight: bold;
+}
+
+.max-height-0 {
+    max-height: 0;
 }
