@@ -1,0 +1,23 @@
+.entity-panel {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    border: 1px solid #AAA;
+    margin-bottom: 20px;
+}
+
+.entity-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: black;
+}
+
+.entity-description {
+    font-size: 14px;
+    color: #999;
+}
+
+.entity-image {
+    max-width: 250px;
+    max-height: 250px;
+}
