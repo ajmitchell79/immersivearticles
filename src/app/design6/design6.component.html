@@ -1,11 +1,16 @@
-<div class="container-fluid mt-2" style="height:100%;" class="pinkbg">
+<div class="background-image">
+    <h2>FX Survey 2018: The trend is your friend…</h2>
+    <h6>Friday, March 29, 2019 by Kevin Rogers</h6>
+    <br>
+    </div>
+<div class="container-fluid mt-2" style="height:100%;">
     <div class="row" style="height:100%;">
-            <div class="col-1">
+            <div class="col-1" style="height:100%;">
                 <div style="font-size:35pt;bottom:0;position:absolute;color:orangered">
                     {{innerScroll| number:'1.0-0'}}%
             </div>
             </div>
-            <div class="col-5">
+            <div class="col-5" style="height:100%;">
                 <div class="scroll-progress scroll-progress--absolute">
                     <div class="scroll-progress__indicator" [style.width.%]="innerScroll">
                         <br />
@@ -16,6 +21,7 @@
                 </div>
             </div>
             <div class="col-5" style="height:100%;padding:0" >
+                <span style="position:absolute;z-index:1000;color:orangered;right:10px;font-size:40pt">{{cityLabel}}</span>
                 <div id="mapDiv" #mapViewNode>
                   </div>
             </div>

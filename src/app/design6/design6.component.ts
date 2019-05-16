@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-design6',
   templateUrl: './design6.component.html',
   styleUrls: ['./design6.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated,
+  //encapsulation: ViewEncapsulation.None,
   providers:[DataService, EsriService]
 })
 export class Design6Component implements OnInit {
@@ -22,15 +22,17 @@ export class Design6Component implements OnInit {
   public innerScroll: number;
   public pageScroll: number;
 
+  public cityLabel ="New York";
+
   private elementScrollPercentage: ElementScrollPercentage; 
 
   private locations: any = [
     [100.523186,13.736717],
-    [151.209900,-33.865143], //sydney
-    [-0.118092,51.509865]
-    ,[55.296249,25.276987],
-    [134.582520,7.514980],
-    [-74.00597,40.71427]];
+    [-0.118092,51.509865, 'London'],
+    [151.209900,-33.865143, 'Sydney'] //sydney
+    ,[55.296249,25.276987, ''],
+    [134.582520,7.514980, ''],
+   ];
   
     private currentIndex =0;
     private isRunning = false;
@@ -88,6 +90,8 @@ public recordInnerScroll( percent: number ) : void {
           this.esriService.goTo(
         this.locations[this.currentIndex][1],
         this.locations[this.currentIndex][0]);
+
+        this.cityLabel = this.locations[this.currentIndex][2];
 
         console.log( this.currentIndex);
 

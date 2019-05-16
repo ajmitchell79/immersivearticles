@@ -78,7 +78,18 @@ export class EsriService {
           map: this._map,   
 
          // var view = new SceneView({
-            camera: {
+            camera: 
+            //  {
+            //   position: {
+            //     x: -0.08156023780775738, // lon
+            //     y:  51.495, //508,   // lat, up and down
+            //     z: 650 // elevation in meters
+            //   },
+          
+            //   tilt: 65
+            // }
+            
+            {
               position: {
                 x: -74, // lon
                 y: 40.42,   // lat
@@ -87,14 +98,7 @@ export class EsriService {
           
               tilt: 65
             }
-          //   camera: { 
-          //    // position: [
-          //   //     //  -0.08156023780775738, // lon, left and right
-          //   //     //  51.50904072030298, // lat, up and down
-
-          //   //  //   2.336006, 48.860818,
-          //   //  //     550  // elevation in meters
-          //   //   ],
+       
          
       });
 
@@ -120,18 +124,26 @@ export class EsriService {
   {
     let that = this;
 
-    // let sv = {
-    //   position: {
-    //     x: lon, // lon
-    //     y: lat,   // lat
-    //     z: 22654 // elevation in meters
-    //   },
+    let location:any;
+
+    if (lat == 51.509865)
+    {
+     location =  {
+      position: {
+        x: -0.08156023780775738, // lon
+        y:  51.495, //508,   // lat, up and down
+        z: 650 // elevation in meters
+      },
   
-    //   tilt: 45
-    // };
+      tilt: 65
+    };
+        }
+        else
+        {
+          location = [lon,lat];
+        }
 
-
-    this._sceneView.goTo([lon,lat]).then(function () {
+    this._sceneView.goTo(location).then(function () {
       //this._sceneView.goTo(sv).then(function () {
       //that._mapView.zoom = that._mapView.zoom - 1;
       debugger;
@@ -160,7 +172,11 @@ export class EsriService {
         symbol: this.generateCylinderSymbol2(6000)
       }); 
 
+      this.addCityGraphics();
+
       this._sceneView.graphics.add(pointGraphic);
+
+      
   }
 
   private generateCylinderSymbol2(height :number)
@@ -181,4 +197,251 @@ export class EsriService {
    return res;
  
   }
+
+
+  private addCityGraphics()
+  {
+    let layer = new this._graphicsLayer();
+    this._map.add(layer);
+ 
+    //willis 
+    var willisPolygon1 = new this._polygon(
+      {
+            rings: [
+         [[-0.08175,51.51317],
+           [-0.08154,51.51308],//
+           [-0.08184,51.51264],
+             [-0.08206,51.51267],
+           [-0.08184,51.51288],
+          [-0.08175,51.51317]
+            ],
+          ]}) ; //,
+ 
+  var willisPolygon2 = new this._polygon(
+      {
+            rings: [
+         [
+              [-0.08154,51.51308],
+              [-0.08132,51.51299],
+              [-0.08161,51.51262],
+               [-0.08184,51.51264],
+                [-0.08160,51.51284],
+              [-0.08154,51.51308]
+            ]
+          ]}) ; //,
+ 
+ var willisPolygon3 = new this._polygon(
+      {
+            rings: [
+               [
+              [-0.08132,51.51299],
+              [-0.08112,51.51286],
+            [-0.08116,51.51272],
+              [-0.08128,51.51263],
+                [-0.08161,51.51262],
+              [-0.08137,51.51278],
+              [-0.08132,51.51299]
+            ]
+          ]}) ; //,
+ 
+          var willisPolygon4 = new this._polygon(
+            {
+                  rings: [
+                     [
+                    [-0.081062,51.512905],
+                    [-0.080488,51.512988],
+                  [-0.080370,51.512631],
+                    [-0.080826,51.512588],
+                      [-0.080992,51.512711],
+                    [-0.081062,51.512905],
+                  ]
+                ]})
+ 
+    var willisGraphic1 = new this._graphic({
+      geometry: willisPolygon1,
+      symbol: this.generateExtrudeSymbol("#9E559C",75)
+    }); 
+      
+    layer.add(willisGraphic1);
+ 
+      var willisGraphic2 = new this._graphic({
+      geometry: willisPolygon2,
+      symbol: this.generateExtrudeSymbol("#9E559C",105)
+    }); 
+      
+    layer.add(willisGraphic2);
+ 
+      var willisGraphic3 = new this._graphic({
+      geometry: willisPolygon3,
+      symbol: this.generateExtrudeSymbol("#9E559C",130)
+    }); 
+      
+    layer.add(willisGraphic3);
+ 
+     var willisGraphic4 = new this._graphic({
+      geometry: willisPolygon4,
+      symbol: this.generateExtrudeSymbol("#9E559C",50)
+    }); 
+      
+    layer.add(willisGraphic4);
+ 
+ 
+    //aviva
+    var avivaPolygon = new this._polygon(
+      {
+        rings: [
+           [
+          [-0.081866,51.514461],
+          [-0.081330,51.514457],
+        [-0.081335,51.514117],
+          [-0.081872,51.514133],
+            [-0.081866,51.514461],
+        ]
+      ]});
+ 
+      var avivaGraphic = new this._graphic({
+        geometry: avivaPolygon,
+        symbol: this.generateExtrudeSymbol("#00F",170)
+      }); 
+ 
+      layer.add(avivaGraphic);
+ 
+    //-- gherkin
+    var gherkinPoint = new this._point(
+      {
+       latitude: 51.514495,
+       longitude: -0.080311
+      });
+ 
+    var gherkinGraphic = new this._graphic({
+      geometry: gherkinPoint,
+      symbol: this.generateCylinderSymbol()
+    }); 
+      
+     layer.add(gherkinGraphic);
+ 
+    //--  cheesegrater
+    var cheesegraterPolygon = new this._polygon(
+      {
+        rings: [
+           [
+          [-0.082679,51.513983],
+          [-0.081947,51.513990],
+        [-0.081931,51.513613],
+          [-0.082628,51.513593],
+            [-0.082679,51.513983],
+        ]
+      ]});
+ 
+    var cheesegraterGraphic = new this._graphic({
+      geometry: cheesegraterPolygon,
+      //symbol: this.generateExtrudeSymbol("#FF0",150)
+      symbol: this.generateTetrahedronSymbol2()
+    }); 
+      
+    layer.add(cheesegraterGraphic);
+ 
+    //-- shard
+    var shardPolygon = new this._point(
+      {
+       latitude: 51.504509,
+       longitude: -0.086517
+      });
+ 
+ 
+    var shardGraphic = new this._graphic({
+      geometry: shardPolygon,
+      symbol: this.generateTetrahedronSymbol()
+    }); 
+    
+    layer.add(shardGraphic);
+ 
+    //---------- walkie ----------------
+    var walkiePolygon = new this._polygon(
+      {
+        rings: [
+          [
+          [-0.083862,51.511599],
+          [-0.083116,51.511496],
+          [-0.083266,51.510915],
+          [-0.084044,51.511005],
+          [-0.083862,51.511599],
+        ]
+      ]}
+    );
+ 
+    var walkieGraphic = new this._graphic({
+      geometry: walkiePolygon,
+      symbol: this.generateExtrudeSymbol("#00FF00",170)
+    });   
+ 
+    layer.add(walkieGraphic);
+    
+   
+  }
+ 
+  private generateTetrahedronSymbol2()
+   {
+     var res =  {
+      type: "point-3d",  // autocasts as new PointSymbol3D()
+      symbolLayers: [{
+        type: "object",  // autocasts as new ObjectSymbol3DLayer()
+        width: 65,  // diameter of the object from east to west in meters
+        height: 220,  // height of the object in meters
+        depth: 65,  // diameter of the object from north to south in meters
+       resource: { primitive: "tetrahedron" },
+        material: { color: "yellow" }
+      }]
+    };
+  
+    return res;
+  
+   }
+ 
+   private generateCylinderSymbol()
+   {
+     var res =  {
+      type: "point-3d",  // autocasts as new PointSymbol3D()
+      symbolLayers: [{
+        type: "object",  // autocasts as new ObjectSymbol3DLayer()
+        width: 55,  // diameter of the object from east to west in meters
+        height: 250,  // height of the object in meters
+        depth: 55,  // diameter of the object from north to south in meters
+       resource: { primitive: "sphere" },
+        material: { color: "red" }
+      }]
+    };
+  
+    return res;
+  
+   }
+ 
+   private generateExtrudeSymbol(color, size){
+     return new this._polygonSymbol3D({
+       symbolLayers: [new this._extrudeSymbol3DLayer({
+         size: size,
+         material: { color: color }
+       })]
+     }); 
+   }
+ 
+   private generateTetrahedronSymbol()
+   {
+     var res =  {
+      type: "point-3d",  // autocasts as new PointSymbol3D()
+      symbolLayers: [{
+        type: "object",  // autocasts as new ObjectSymbol3DLayer()
+        width: 75,  // diameter of the object from east to west in meters
+        height: 350,  // height of the object in meters
+        depth: 75,  // diameter of the object from north to south in meters
+       resource: { primitive: "tetrahedron" },
+        material: { color: "dodgerblue" }
+      }]
+    };
+  
+    return res;
+  
+   }
+  
+  
 }

@@ -30,11 +30,16 @@ export class ChartComponent implements OnInit {
       enabled: false
     },
     plotOptions: {
-      line: {
-          marker: {
-              enabled: false
-          }
-      }
+      series: {
+        dataLabels: {
+            enabled: true
+        }
+    }
+      // line: {
+      //     marker: {
+      //         enabled: false
+      //     }
+      // }
   },
   xAxis: {
     categories: ['JPMorgan', 'Goldman', 'UPS', 'HSBC', 'Citi'],
