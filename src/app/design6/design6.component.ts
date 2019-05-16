@@ -77,10 +77,6 @@ export class Design6Component implements OnInit {
 
 public recordInnerScroll( percent: number ) : void {
     this.innerScroll = percent;
-    //console.log(percent);
-    //this.updateSeries();
-
-    
 
     if (!this.isRunning)
     {
