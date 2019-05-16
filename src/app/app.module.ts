@@ -16,6 +16,8 @@ import { ChartModule } from 'angular-highcharts';
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { Highlight } from './design3/highlight.pipe'
+
 import { MatNativeDateModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatProgressBarModule, MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -39,7 +41,8 @@ import { EscapeHtmlPipe } from './shared/escape-html-pipe.pipe';
     AppComponent,
     NavComponent, 
     routingComponents, 
-    ChartComponent, ElementScrollPercentageDirective, EscapeHtmlPipe
+    ChartComponent, ElementScrollPercentageDirective, EscapeHtmlPipe,
+    Highlight
   ],
   imports: [
     BrowserModule,

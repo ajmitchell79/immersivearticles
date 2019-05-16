@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { KeywordsService } from './keywordsService';
 import { ContentService } from './contentService';
+import { SharedService } from './sharedService';
 import { Highlight } from './highlight.pipe';
+import { ArticleComponent} from './article.component';
+import { Subscription } from 'rxjs';
 
 //import kwd from 'keyword.json'
 
@@ -10,30 +13,35 @@ import { Highlight } from './highlight.pipe';
   selector: 'app-design3',
   templateUrl: './design3.component.html',
   styleUrls: ['./design3.component.scss'],
-  providers: [KeywordsService, ContentService],
+  providers: [KeywordsService, ContentService, ArticleComponent],
 })
 export class Design3Component implements OnInit {
-
-  article1 = 'Some text with keyword JP Morgan'
-  relatedContent = ''
   relatedLinks = []
+  subscription: Subscription;
+  relatedContent = '';
+ 
   constructor(
     private keywordsService: KeywordsService,
-    private contentService: ContentService
+    private contentService: ContentService,
+    private articleComponent: ArticleComponent,
+    private sharedService: SharedService
   ) { 
     this.relatedLinks = contentService.getRelatedLinks();
-  }
-
-  onClick() {
-    this.relatedContent = "ttrans"; 
+    this.subscription = this.sharedService.getMessage().subscribe(message => { 
+      this.relatedContent = message.text; 
+    });
   }
 
   onCloseRelatedContent() {
-    this.relatedContent = "ttrans-back";
+    this.sharedService.sendMessage("close");
   }
+
   ngOnInit() {
   }
 
+  ngOnDestroy () {
+    this.subscription.unsubscribe();
+  }
 }
 
 
