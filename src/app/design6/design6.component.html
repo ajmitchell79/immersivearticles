@@ -16,7 +16,7 @@
                         <br />
                     </div>
                 </div>
-                <div (scrollPercentage)="recordInnerScroll( $event )" class="inner__content" [innerHTML]="dataService.articleChartData().content | keepHtml">
+                <div (scrollPercentage)="recordInnerScroll( $event )" class="inner__content" [innerHTML]="articleContent | keepHtml">
 
                 </div>
             </div>

@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-design6',
   templateUrl: './design6.component.html',
   styleUrls: ['./design6.component.scss'],
-  //encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None,
   providers:[DataService, EsriService]
 })
 export class Design6Component implements OnInit {
@@ -23,6 +23,7 @@ export class Design6Component implements OnInit {
   public pageScroll: number;
 
   public cityLabel ="New York";
+  public articleContent: string;
 
   private elementScrollPercentage: ElementScrollPercentage; 
 
@@ -42,6 +43,11 @@ export class Design6Component implements OnInit {
     elementScrollPercentage: ElementScrollPercentage, private esriService : EsriService ) {
 
       this.elementScrollPercentage = elementScrollPercentage;
+
+      this.articleContent = dataService.articleChartData().content
+      .replace("New York", "<span class='highlight'>New York</span>")
+      .replace("London", "<span class='highlight'>London</span>")
+      .replace("Sydney", "<span class='highlight'>Sydney</span>");
 
       //--
       this.demoRange = [0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15]

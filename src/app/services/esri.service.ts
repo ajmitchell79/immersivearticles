@@ -138,6 +138,18 @@ export class EsriService {
       tilt: 65
     };
         }
+        else if (lat == -33.865143) //sydney
+        {
+          location =  { //151.209900,-33.865143
+            position: {
+              x: 151.209900, // lon
+              y:  -33.865143, //508,   // lat, up and down
+              z: 12650 // elevation in meters
+            },
+        
+            tilt: 65
+          };
+        }
         else
         {
           location = [lon,lat];
