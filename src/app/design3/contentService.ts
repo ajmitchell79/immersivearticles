@@ -57,22 +57,26 @@ public getArticle () {
       switch (word) {
         case "Euromoney":
           return [
-            new RelatedLink("Euromoney magazine", "https://www.euromoney.com/magazine"),
-            new RelatedLink("Markets", "https://www.euromoney.com/markets"),
-            new RelatedLink("News and Opinion", "https://www.euromoney.com/news-and-opinion")
+            new RelatedLink("Euromoney was born with the wholesale...", "https://www.euromoney.com/magazine", "April 2019", "", ""),
+            new RelatedLink("Banking and capital markets in Asia...", "https://www.euromoney.com/markets", "May 2019", "", ""),
+            new RelatedLink("More add offshore platform for private...", "https://www.euromoney.com/news-and-opinion", "May 2019", "", "")
           ];
         case "JPMorgan":
           return [
-            new RelatedLink("JPMorgan", "https://www.jpmorgan.com/country/GB/en/jpmorgan"),
-            new RelatedLink("Insights", "https://www.jpmorgan.com/country/GB/EN/insights"),
-            new RelatedLink("Solutions", "https://www.jpmorgan.com/country/GB/EN/solutions")
+            new RelatedLink("J.P.Morgan in the United Kingdom...", "https://www.jpmorgan.com/country/GB/en/jpmorgan", "May 2019", "", ""),
+            new RelatedLink("Insights. E-Trading survey 2019...", "https://www.jpmorgan.com/country/GB/EN/insights", "April 2019", "", ""),
+            new RelatedLink("Global pensions assess a changing...", "https://www.jpmorgan.com/country/GB/EN/solutions", "May 2019", "", "")
+          ];
+        case "in the piece I wrote for last year’s survey":
+          return [
+            new RelatedLink("FX Survey 2017: Results index", "https://www.jpmorgan.com/country/GB/en/jpmorgan", "May 2019", "../../assets/images/u93.png", "The top firms this year look like they haven’t moved in 18 years. How can nearly two decades of upheaval appear to have altered the rankings so little in Euromoney’s foreign exchange survey?"),
           ];
         default:
         return [
-          new RelatedLink("Need more gold", "http://google.com/search?q=gold"),
-          new RelatedLink("Some more reading", "http://google.com/search?q=reading"),
-          new RelatedLink("Get some Money", "http://google.com/search?q=money"),
-          new RelatedLink("Futures", "http://google.com/search?q=futures")
+          new RelatedLink("Need more gold", "http://google.com/search?q=gold", "May 2019", "", ""),
+          new RelatedLink("Some more reading", "http://google.com/search?q=reading", "April 2019", "", ""),
+          new RelatedLink("Get some Money", "http://google.com/search?q=money", "March 2019", "", ""),
+          new RelatedLink("Futures", "http://google.com/search?q=futures", "May 2019", "", "")
         ];
 
         }
@@ -80,5 +84,10 @@ public getArticle () {
   }
 
   export class RelatedLink {
-    constructor (public text: string, public link: string) {}
+    constructor (
+      public text: string, 
+      public link: string, 
+      public date: string,
+      public imagelink: string,
+      public description: string) {}
    }

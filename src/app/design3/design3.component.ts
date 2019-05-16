@@ -19,6 +19,8 @@ export class Design3Component implements OnInit {
   relatedLinks = []
   subscription: Subscription;
   relatedContent = '';
+  relatedContentForHead = '';
+  currentWord = '';
  
   constructor(
     private keywordsService: KeywordsService,
@@ -27,11 +29,21 @@ export class Design3Component implements OnInit {
     private sharedService: SharedService
   ) { 
     this.subscription = this.sharedService.getRelatedCnt().subscribe(message => { 
+      this.currentWord = message.text;
       this.relatedLinks = contentService.getRelatedLinks(message.text); 
     });
 
     this.subscription = this.sharedService.getClass().subscribe(message => { 
-      this.relatedContent = message.text; 
+      if (this.relatedLinks && this.relatedLinks.length == 1)
+       {
+          this.relatedContent = '';
+          this.relatedContentForHead = message.text;
+
+       } 
+       else {
+         this.relatedContentForHead = '';
+        this.relatedContent = message.text;
+       }
     });
   }
 
@@ -49,5 +61,10 @@ export class Design3Component implements OnInit {
 
 
 export class RelatedLink {
-  constructor (public text: string, public link: string) {}
+  constructor (
+    public text: string, 
+    public link: string, 
+    public date: string,
+    public imagelink: string,
+    public description: string) {}
  }
