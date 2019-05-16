@@ -45,24 +45,17 @@ export class Design5Component implements OnInit {
       for(let i=0; i<this.entities.length; i++){
         this.entities[i].display = this.entityDisplayLevel(i, this.entities.length);
       }
-    // this.entities = this.entities.map((entity, index) =>
-    // {
-    //   return {
-    //     ...entity,
-    //     display: this.entityDisplayLevel(index, this.entities.length)
-    //   }
-    // });
   }
 
   entityDisplayLevel(index, count) {
     const center = count / (100/this.innerScroll);
+    const edgeBuffer = Math.max(3 - center, 4 - (count - center), 0);
     const distance = Math.abs(index - center);
-    return distance > 3 ? 0 : distance > 1 ? 1 : 2;
+    return distance > (4 + edgeBuffer) ? 0 : distance > 1 ? 1 : 2;
   }
   
   public recordInnerScroll( percent: number ) : void {
     this.innerScroll = percent;
-    //console.log(percent);
     this.updateEntityDisplay();
   }
 
