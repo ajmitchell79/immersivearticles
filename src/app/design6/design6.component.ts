@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef,ViewEncapsulation} from '@angular/core';
 import { DataService } from '../services/data.service';
 import { ElementScrollPercentage } from "../services/element-scroll-percentage.service";
 import {EsriService} from "../services/esri.service";
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-design6',
   templateUrl: './design6.component.html',
   styleUrls: ['./design6.component.scss'],
+  encapsulation: ViewEncapsulation.Emulated,
   providers:[DataService, EsriService]
 })
 export class Design6Component implements OnInit {
@@ -21,7 +22,7 @@ export class Design6Component implements OnInit {
   public innerScroll: number;
   public pageScroll: number;
 
-  private elementScrollPercentage: ElementScrollPercentage;
+  private elementScrollPercentage: ElementScrollPercentage; 
 
   private locations: any = [
     [100.523186,13.736717],

@@ -38,12 +38,19 @@ export class ChartComponent implements OnInit {
   },
   xAxis: {
     categories: ['JPMorgan', 'Goldman', 'UPS', 'HSBC', 'Citi'],
+    lineWidth: 1,
+    gridLineWidth: 0,
     title: {
         text: null
     }
 },
+yAxis: {
+  lineWidth: 1,
+  gridLineWidth: 0
+},
 series:[{
   pointWidth:30,
+  name: "Corporate Values",
   data: [
     {y: 43934, name: 'JPMorgan', color: 'red'},
     {y: 57177, name: 'Goldman', color: 'yellow'},
