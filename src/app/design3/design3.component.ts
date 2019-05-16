@@ -26,14 +26,17 @@ export class Design3Component implements OnInit {
     private articleComponent: ArticleComponent,
     private sharedService: SharedService
   ) { 
-    this.relatedLinks = contentService.getRelatedLinks();
-    this.subscription = this.sharedService.getMessage().subscribe(message => { 
+    this.subscription = this.sharedService.getRelatedCnt().subscribe(message => { 
+      this.relatedLinks = contentService.getRelatedLinks(message.text); 
+    });
+
+    this.subscription = this.sharedService.getClass().subscribe(message => { 
       this.relatedContent = message.text; 
     });
   }
 
   onCloseRelatedContent() {
-    this.sharedService.sendMessage("close");
+    this.sharedService.setClass("close");
   }
 
   ngOnInit() {

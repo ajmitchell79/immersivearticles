@@ -5,6 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class KeywordsService {
     getKeywords() {
-      return JSON.parse("{\"keywords\": [\"JP Morgan\", \"Euromoney\"]}");
+      return ['JPMorgan', 'Euromoney', 'Troy Rohrbaugh'];
     }
   }
