@@ -5,13 +5,6 @@ import { KeywordsService} from './keywordsService'
 
 @Pipe({ name: "highlight" })
 export class Highlight implements PipeTransform {
-    /* use this for single match search */
-    static SINGLE_MATCH: string = "Single-Match";
-    /* use this for single match search with a restriction that target should start with search string */
-    static SINGLE_AND_STARTS_WITH_MATCH: string = "Single-And-StartsWith-Match";
-    /* use this for global search */
-    static MULTI_MATCH: string = "Multi-Match";
-
     kwd = [];
 
     constructor(private sanitizer: DomSanitizer, keywords: KeywordsService) {

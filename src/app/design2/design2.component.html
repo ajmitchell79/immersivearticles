@@ -53,7 +53,7 @@
                                 </div>
                         </div>
                         <div class="column-container">
-                                <img class="image" src={{imageUrl}}>
+                                <img [@fade]="imageState" (@fade.done)="onDone($event)" class="image" src={{imageUrl}}>
                         </div>
                 </div>
     </div>
