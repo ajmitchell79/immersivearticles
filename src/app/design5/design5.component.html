@@ -3,12 +3,13 @@
                 <h6>Friday, March 29, 2019 by Kevin Rogers</h6>
                 <br>
                 </div>
-<div class="container-fluid">
-        <div class="row">
-                <div (scrollPercentage)="recordInnerScroll( $event )" id="article-text" class="col-md" style="max-height: 600px;overflow-y: scroll">
+<div class="container-fluid mt-3">
+        <div class="row" >
+                <div class="col-2"></div>
+                <div (scrollPercentage)="recordInnerScroll( $event )" id="article-text" class="col-4" style="max-height: 750px;overflow-y: scroll">
                         <span *ngFor="let chunk of content" [ngClass]="{'highlight-text': chunk.name!=''}" innerHtml="{{chunk.content}}"></span>
                 </div>
-                <div class="col-md entity-list">
+                <div class="col-4 entity-list" style="max-height: 750px;">
                         <div *ngIf="loading">Loading...</div>
                         <ng-container *ngFor="let entity of entities" >
                         <div [ngClass]="{'entity-panel': entity.display > 1, 'entity-panel-small': entity.display === 1, 'entity-panel-hidden': entity.display === 0}">
@@ -17,11 +18,12 @@
                                         <div *ngIf="entity.display > 1" class="entity-description"><span>{{entity.data.description}}</span></div>
                                 </div>
                                 <div *ngIf="entity.data.image" class="entity-image-container">
-                                        <img [ngClass]="{'max-height-0': entity.display != 2, 'entity-image': entity.display === 2}" src="{{entity.data.image.hostPageUrl}}" />
+                                        <img [ngClass]="{'max-height-0': entity.display != 2, 'entity-image': entity.display === 2}" src="{{entity.data.image.hostPageUrl}}" onerror="this.parentNode.removeChild(this)" />
                                 </div>
                         </div>
                         </ng-container>
                 </div>
+                <div class="col-2"></div>
         </div>
 
         <div>
