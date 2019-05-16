@@ -12,7 +12,7 @@ export class ContentService {
         new RelatedLink("Futures", "http://google.com/search?q=futures")
   
       ];
-    }
+    } 
   }
 
   export class RelatedLink {
