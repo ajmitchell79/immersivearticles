@@ -36,6 +36,7 @@
 @import "utilities";
 @import "print";
 @import '~ngx-toastr/toastr.css';
+@import url('https://js.arcgis.com/4.10/esri/css/main.css');
 
 
 :host {
@@ -87,4 +88,13 @@ a {
 		overflow: auto ;
 		padding: 10px 40px 10px 40px ;
 	}
+}
+
+#mapDiv {
+    // height: 1000px;
+    // height: 400px;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    //width: 100%;
 }

@@ -1,9 +1,27 @@
-<div class="container-fluid mt-3">
-    <div class="row" >
-            <div class="col-2"></div>
-            <div class="col-8">
-                   ZZZZZ
+<div class="container-fluid mt-2" style="height:100%;background-color: #333;color:#ccc">
+    <div class="row" style="height:100%;">
+            <div class="col-1">
+                <div style="font-size:35pt;bottom:0;position:absolute;color:orangered">
+                    {{innerScroll| number:'1.0-0'}}%
             </div>
-            <div class="col-2"></div>
+            </div>
+            <div class="col-5">
+                <div class="scroll-progress scroll-progress--absolute">
+                    <div class="scroll-progress__indicator" [style.width.%]="innerScroll">
+                        <br />
+                    </div>
+                </div>
+                <div (scrollPercentage)="recordInnerScroll( $event )" class="inner__content" [innerHTML]="dataService.articleChartData().content | keepHtml">
+
+                </div>
+            </div>
+            <div class="col-5" style="height:100%;padding:0" >
+                <div id="mapDiv" #mapViewNode>
+                  </div>
+            </div>
+            <div class="col-1"></div>
     </div>
 </div>
+
+<!-- <div id="mapDiv" #mapViewNode>
+  </div> -->
