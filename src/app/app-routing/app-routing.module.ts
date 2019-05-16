@@ -3,12 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { OriginalComponent } from '../original/original.component';
+
 import { Design1Component } from '../design1/design1.component';
 import { Design2Component } from '../design2/design2.component';
 import { Design3Component } from '../design3/design3.component';
 import { Design4Component } from '../design4/design4.component';
 import { Design5Component } from '../design5/design5.component';
 import { Design6Component } from '../design6/design6.component';
+import {ArticleComponent} from '../design3/article.component';
+
 
 import { ErrorComponent } from '../shared/error/error.component';
 
@@ -89,4 +92,5 @@ export class AppRoutingModule { }
 
 
 export const routingComponents = [OriginalComponent, Design1Component,  Design2Component,
-  Design3Component, Design4Component, Design5Component, Design6Component,ErrorComponent];
+Design3Component, Design4Component, Design5Component, Design6Component,ErrorComponent, ArticleComponent];
+
