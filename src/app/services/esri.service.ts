@@ -143,8 +143,8 @@ export class EsriService {
           location =  { //151.209900,-33.865143
             position: {
               x: 151.209900, // lon
-              y:  -33.865143, //508,   // lat, up and down
-              z: 12650 // elevation in meters
+              y:  -34.15, //508,   // lat, up and down
+              z: 22650 // elevation in meters
             },
         
             tilt: 65
