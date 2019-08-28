@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Design2Component } from './design2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('Design2Component', () => {
   let component: Design2Component;
@@ -8,6 +9,7 @@ describe('Design2Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [BrowserAnimationsModule],
       declarations: [ Design2Component ]
     })
     .compileComponents();
@@ -19,7 +21,7 @@ describe('Design2Component', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create Design2Component', () => {
     expect(component).toBeTruthy();
   });
 });

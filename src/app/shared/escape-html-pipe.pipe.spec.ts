@@ -1,8 +1,10 @@
-import { EscapeHtmlPipePipe } from './escape-html-pipe.pipe';
+import { EscapeHtmlPipe } from './escape-html-pipe.pipe';
+import { DomSanitizer } from '@angular/platform-browser';
 
-describe('EscapeHtmlPipePipe', () => {
+describe('EscapeHtmlPipe', () => {
   it('create an instance', () => {
-    const pipe = new EscapeHtmlPipePipe();
+    //let ds = new DomSanitizer();
+    const pipe = new EscapeHtmlPipe(null);
     expect(pipe).toBeTruthy();
   });
 });

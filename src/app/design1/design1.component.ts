@@ -23,7 +23,7 @@ export class Design1Component implements OnInit {
   private elementScrollPercentage: ElementScrollPercentage;
 
   // I initialize the app-component.
-  constructor(private dataService : DataService, elementScrollPercentage: ElementScrollPercentage ) {
+  constructor(public dataService : DataService, elementScrollPercentage: ElementScrollPercentage ) {
 
       this.elementScrollPercentage = elementScrollPercentage;
 

@@ -1,12 +1,16 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
-import { ElementScrollPercentageService } from './element-scroll-percentage.service';
+import { ElementScrollPercentage } from './element-scroll-percentage.service';
 
 describe('ElementScrollPercentageService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => TestBed.configureTestingModule({
+    providers:[HttpClient]
+  }));
 
   it('should be created', () => {
-    const service: ElementScrollPercentageService = TestBed.get(ElementScrollPercentageService);
+    
+    const service: ElementScrollPercentage = TestBed.get(ElementScrollPercentage);
     expect(service).toBeTruthy();
   });
 });

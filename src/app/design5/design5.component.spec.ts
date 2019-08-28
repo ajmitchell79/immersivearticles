@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Design5Component } from './design5.component';
+import { HttpClient, HttpHandler,HttpBackend } from '@angular/common/http';
 
 describe('Design5Component', () => {
   let component: Design5Component;
@@ -8,7 +9,8 @@ describe('Design5Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Design5Component ]
+      declarations: [ Design5Component ],
+      providers:[HttpClient,HttpHandler,HttpBackend ]
     })
     .compileComponents();
   }));

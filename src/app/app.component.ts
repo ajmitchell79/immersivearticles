@@ -11,6 +11,7 @@ import { ConfigService } from './services/config.service';
 export class AppComponent {
   version: string = environment.envVersion;
   environment: string = environment.envName;
+  userName: string 
 
   @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
 

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClient,HttpHandler,HttpBackend } from '@angular/common/http';
 
 import { NavComponent } from './nav.component';
+import { AuthenticationService } from '../services/authentication.service';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -8,7 +11,9 @@ describe('NavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavComponent ]
+      imports:[RouterTestingModule],
+      declarations: [ NavComponent ],
+      providers:[AuthenticationService,HttpClient,HttpHandler,HttpBackend]
     })
     .compileComponents();
   }));
