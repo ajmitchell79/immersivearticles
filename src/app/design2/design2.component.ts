@@ -8,9 +8,10 @@ import { fade } from '../shared/animations';
   animations: fade
 })
 export class Design2Component implements OnInit {
-  @ViewChild('firstContainer') private firstContainer: ElementRef<HTMLMainElement>;
-  @ViewChild('secondContainer') private secondContainer: ElementRef<HTMLMainElement>;
-  @ViewChild('thirdContainer') private thirdContainer: ElementRef<HTMLMainElement>;
+  //@ViewChild('firstContainer', { static: true }) private firstContainer: ElementRef<HTMLMainElement>;
+  @ViewChild('firstContainer', { static: true }) private firstContainer: ElementRef;
+  @ViewChild('secondContainer', { static: true }) private secondContainer: ElementRef;
+  @ViewChild('thirdContainer', { static: true }) private thirdContainer: ElementRef;
   
   public imagePosition = 0;
   public imageState = 'in';

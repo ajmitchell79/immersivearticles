@@ -13,8 +13,8 @@ import {ChartComponent} from '../shared/chart/chart.component';
 })
 export class Design1Component implements OnInit {
 
-  @ViewChild('chart1') chart1 : ChartComponent;
-  @ViewChild('chart2') chart2 : ChartComponent;
+  @ViewChild('chart1', { static: true }) chart1 : ChartComponent;
+  @ViewChild('chart2', { static: true }) chart2 : ChartComponent;
 
   public demoRange: number[];
   public innerScroll: number;

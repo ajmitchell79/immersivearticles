@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class Design6Component implements OnInit {
 
-  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef;
 
   private mapInitialisedRef: Subscription = null;
   private locateCompleteRef: Subscription = null;
